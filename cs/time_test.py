@@ -1,4 +1,5 @@
 import time
+from random import randint
 
 
 def ins(func):
@@ -16,12 +17,10 @@ def t_1(x):
   for i in range(len(x)-1):
     for z in range(len(x)-1 - i):
       if x[z] > x[z + 1]:
-        # print(z, z+1)
-        # print(x[z], x[z + 1])
+        # print(z, z+1, x[z], x[z + 1])
         x[z], x[z + 1] = x[z + 1], x[z]
       iters+=1
-  print(iters)
-  print(x)
+  print(f"{iters}, {x}")
 
 @ins
 def t_2(x):
@@ -29,12 +28,10 @@ def t_2(x):
   while iters < len(x)-1:
     for z in range(len(x)-1):
       if x[z] > x[z + 1]:
-        # print(z, z+1)
-        # print(x[z], x[z + 1])
+        # print(z, z+1, x[z], x[z + 1])
         x[z], x[z + 1] = x[z + 1], x[z]
       iters += 1
-  print(iters)
-  print(x)
+  print(f"{iters}, {x}")
 
 class BubbleSort:
     def __init__(self, l: list):
@@ -42,7 +39,7 @@ class BubbleSort:
             self.l = l
         else:
             raise ValueError
-
+    
     @property
     @ins
     def bubble_sort(self):
@@ -53,9 +50,8 @@ class BubbleSort:
                 if self.l[x] > self.l[x + 1]:
                   self.l[x], self.l[x + 1] = self.l[x + 1], self.l[x]
                 iters += 1
-        print(iters)
-        print(self.l)
-
+        print(f"{iters}, {self.l}")
+    
     @property
     @ins
     def bubble_sort_w(self):
@@ -63,48 +59,24 @@ class BubbleSort:
       while iters < len(self.l)-1:
         for z in range(len(self.l)-1):
           if self.l[z] > self.l[z + 1]:
-            # print(z, z+1)
-            # print(x[z], x[z + 1])
+            # print(z, z+1, x[z], x[z + 1])
             self.l[z], self.l[z + 1] = self.l[z + 1], self.l[z]
           iters += 1
-      print(iters)
-      print(self.l)
+      print(f"{iters}, {self.l}")
 
 
 if __name__ == "__main__":
-  x = [10, 6, 12, 4, 3, 8, 2, 1]
+  # print(x:=[randint(1, 99) for i in range(10)])
+  x = [randint(1, 99) for i in range(10)]
+  print(x)
 
-  # func
   print("func")
   t_1(x)
   t_2(x)
-
-  # oop
-  print("\nOOP")
+  print("OOP")
   v = BubbleSort(x)
   v.bubble_sort
   # print(v.l)
-
   t = BubbleSort(x)
   t.bubble_sort_w
   # print(t.l)
-
-
-###################################################################
-# func
-# 28
-# [1, 2, 3, 4, 6, 8, 10, 12]
-# 1611222175.3873386, 1611222175.387401, 10000000.00006247
-# 7
-# [1, 2, 3, 4, 6, 8, 10, 12]
-# 1611222175.3874433, 1611222175.3874779, 10000000.00003457
-#
-# OOP
-# 28
-# [1, 2, 3, 4, 6, 8, 10, 12]
-# 1611222175.3875327, 1611222175.38761, 10000000.00007725
-# 7
-# [1, 2, 3, 4, 6, 8, 10, 12]
-# 1611222175.3876426, 1611222175.3876843, 10000000.00004172
-###################################################################
-
