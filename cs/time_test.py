@@ -64,19 +64,52 @@ class BubbleSort:
           iters += 1
       print(f"{iters}, {self.l}")
 
+    @property
+    @ins
+    def bubble_sorted(self):  
+        swapped = True
+        while swapped:
+            swapped = False
+            iters = 0
+            for i in range(len(self.l) - 1):
+                if self.l[i] > self.l[i + 1]:
+                    self.l[i], self.l[i + 1] = self.l[i + 1], self.l[i]
+                    swapped = True
+                iters += 1
+        print(f"{iters}, {x}")
+
+
+@ins
+def bubble_sorted(nums):  
+    # Устанавливаем swapped в True, чтобы цикл запустился хотя бы один раз
+    swapped = True
+    while swapped:
+        swapped = False
+        iters = 0
+        for i in range(len(nums) - 1):
+            if nums[i] > nums[i + 1]:
+                # Меняем элементы
+                nums[i], nums[i + 1] = nums[i + 1], nums[i]
+                # Устанавливаем swapped в True для следующей итерации
+                swapped = True
+            iters += 1
+    print(f"{iters}, {x}")
+
 
 if __name__ == "__main__":
   # print(x:=[randint(1, 99) for i in range(10)])
   x = [randint(1, 99) for i in range(10)]
   print(x)
-
   print("func")
   t_1(x)
   t_2(x)
   print("OOP")
   v = BubbleSort(x)
   v.bubble_sort
-  # print(v.l)
   t = BubbleSort(x)
   t.bubble_sort_w
-  # print(t.l)
+  print("#######"*10)
+  bubble_sorted(x)
+  ts = BubbleSort(x)
+  ts.bubble_sorted 
+
