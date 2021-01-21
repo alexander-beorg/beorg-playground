@@ -7,7 +7,7 @@ def ins(func):
     start = time.time()
     result = func(*args, **kwargs)
     end = time.time()
-    print(f"{start}, {end}, {round((end-start)+10000000, 8)}")
+    print(f"{start}, {end}, {(end-start)*10000000}")
     return result
   return wrapper
 
@@ -39,6 +39,15 @@ class BubbleSort:
             self.l = l
         else:
             raise ValueError
+    
+    def ins(func):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            result = func(*args, **kwargs)
+            end = time.time()
+            print(f"{start}, {end}, {round((end-start)*10000000, 8)}")
+            return result
+        return wrapper
     
     @property
     @ins
