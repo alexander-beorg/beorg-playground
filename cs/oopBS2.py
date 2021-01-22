@@ -12,22 +12,27 @@ class SchoolMember(metaclass=ABCMeta):
 
 class Teacher(SchoolMember):
   def __init__(self, name, age, salary):
-    SchoolMember.__init__(self, name, age)
+    # SchoolMember.__init__(self, name, age)
+    # super(Teacher, self).__init__(name, age)
+    super().__init__(name, age)
     self.salary = salary
     print('(Создан Teacher: {0})'.format(self.name))
 
   def tell(self):
-    SchoolMember.tell(self)
+    # SchoolMember.tell(self)
+    super().tell()
     print('Зарплата: "{0:d}"'.format(self.salary))
 
 class Student(SchoolMember):
   def __init__(self, name, age, marks):
-    SchoolMember.__init__(self, name, age)
+    # SchoolMember.__init__(self, name, age)
+    super().__init__(name, age)
     self.marks = marks
     print('(Создан Student: {0})'.format(self.name))
 
   def tell(self):
-    SchoolMember.tell(self)
+    # SchoolMember.tell(self)
+    super().tell()
     print('Оценки: "{0:d}"'.format(self.marks))
 
 t = Teacher('Mrs. Shrividya', 40, 30000)
@@ -42,4 +47,3 @@ print() # печатает пустую строку
 members = [t, s]
 for member in members:
     member.tell() # работает как для преподавателя, так и для студента
-
